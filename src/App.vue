@@ -1,6 +1,5 @@
 <template>
 <Blocks></Blocks>
-<button>2</button>
 </template>
 
 <script setup lang='ts'>
