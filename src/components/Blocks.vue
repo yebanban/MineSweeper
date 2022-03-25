@@ -81,19 +81,19 @@ const lclick = (block: BlockState) => {
   } else {
     open(block)
   }
+  if (isWin()) {
+    gameOver()
+    alert('赢了！')
+  }
 }
 const open = async (block: BlockState) => {
   block.isOpen = true
   expendZero(block)
 
-  await nextTick()
   if (block.isMine) {
     showAllMines()
     gameOver()
     alert('失败！')
-  } else if (isWin()) {
-    gameOver()
-    alert('赢了！')
   }
 }
 const openAround = (block: BlockState) => {
@@ -111,14 +111,12 @@ const openAround = (block: BlockState) => {
 const isWin = () => {
   return blocks.flat().every(b => b.isOpen || (b.isFlag && b.isMine))
 }
-const setFlag = async (block: BlockState) => {
+const setFlag = (block: BlockState) => {
   if (isEnd.value || block.isOpen) return
   block.isFlag = !block.isFlag
-  await nextTick()
   if (isWin()) {
     gameOver()
     alert('赢了！')
-    
   }
 }
 const gameOver = () => {
