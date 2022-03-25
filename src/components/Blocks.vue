@@ -86,14 +86,17 @@ const lclick = (block: BlockState) => {
     alert('赢了！')
   }
 }
-const open = async (block: BlockState) => {
+const open =  (block: BlockState) => {
   block.isOpen = true
   expendZero(block)
 
   if (block.isMine) {
     showAllMines()
     gameOver()
-    alert('失败！')
+    setTimeout(()=>{
+      alert('失败！')
+    })
+    
   }
 }
 const openAround = (block: BlockState) => {
@@ -124,7 +127,7 @@ const gameOver = () => {
 }
 const showAllMines = () => {
   blocks.flat().forEach(b => {
-    if (b.isMine) {
+    if (b.isMine&&!b.isFlag) {
       b.isOpen = true
     }
   })
