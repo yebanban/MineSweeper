@@ -37,8 +37,8 @@ interface BlockState {
   adjacentMines: number
   isFlag: boolean
 }
-const LENGTH = 10
-const WIDTH = 10
+const LENGTH = 15
+const WIDTH = 20
 const isGeneration = ref(false)
 const isEnd = ref(false)
 const blocks = reactive<BlockState[][]>(
@@ -72,7 +72,7 @@ const lclick = (block: BlockState) => {
   if (isEnd.value) return
   if (block.isFlag) return
   if (!isGeneration.value) {
-    generateMines(0.2, block)
+    generateMines(0.1, block)
     generateAdjacentMines()
     isGeneration.value = true
   }
@@ -86,17 +86,16 @@ const lclick = (block: BlockState) => {
     alert('赢了！')
   }
 }
-const open =  (block: BlockState) => {
+const open = (block: BlockState) => {
   block.isOpen = true
   expendZero(block)
 
   if (block.isMine) {
     showAllMines()
     gameOver()
-    setTimeout(()=>{
+    setTimeout(() => {
       alert('失败！')
     })
-    
   }
 }
 const openAround = (block: BlockState) => {
@@ -127,7 +126,7 @@ const gameOver = () => {
 }
 const showAllMines = () => {
   blocks.flat().forEach(b => {
-    if (b.isMine&&!b.isFlag) {
+    if (b.isMine && !b.isFlag) {
       b.isOpen = true
     }
   })
@@ -174,14 +173,12 @@ const generateAdjacentMines = () => {
   )
 }
 const expendZero = (block: BlockState) => {
-  if (!block.isMine && block.adjacentMines === 0) {
-    getAllRound(block).forEach(b => {
-      if (!b.isOpen && !b.isFlag) {
-        b.isOpen = true
-        expendZero(b)
-      }
-    })
-  }
+  if (block.isMine || block.adjacentMines !== 0) return
+  getAllRound(block).forEach(b => {
+    if (!b.isOpen && !b.isFlag) {
+      open(b)
+    }
+  })
 }
 </script>
 
