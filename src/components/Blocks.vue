@@ -11,7 +11,7 @@
         cursor-pointer
         :class="getClass(block)"
         @click="lclick(block)"
-        @contextmenu.prevent="setFlag(block)"
+        @contextmenu.prevent="rclick(block)"
         font-700
       >
         <template v-if="block.isOpen">
@@ -86,10 +86,17 @@ const lclick = (block: BlockState) => {
     alert('赢了！')
   }
 }
+const rclick=(block: BlockState) => {
+  if (isEnd.value || block.isOpen) return
+  setFlag(block)
+  if (isWin()) {
+    gameOver()
+    alert('赢了！')
+  }
+}
 const open = (block: BlockState) => {
   block.isOpen = true
   expendZero(block)
-
   if (block.isMine) {
     showAllMines()
     gameOver()
@@ -114,12 +121,7 @@ const isWin = () => {
   return blocks.flat().every(b => b.isOpen || (b.isFlag && b.isMine))
 }
 const setFlag = (block: BlockState) => {
-  if (isEnd.value || block.isOpen) return
   block.isFlag = !block.isFlag
-  if (isWin()) {
-    gameOver()
-    alert('赢了！')
-  }
 }
 const gameOver = () => {
   isEnd.value = true
