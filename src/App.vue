@@ -1,10 +1,14 @@
 <template>
-<Blocks></Blocks>
+  <game></game>
+  <Footer></Footer>
 </template>
 
-<script setup lang='ts'>
-</script> 
+<script setup lang="ts">
+</script>
 
-<style lang='scss' scoped>
-
+<style lang="scss" scoped>
+.dark {
+  background: #121212;
+  color: white;
+}
 </style>

@@ -10,6 +10,9 @@ export default defineConfig({
   plugins: [
     vue(),
     Unocss({
+      shortcuts:[
+        ['btn','px-3 py-1 rounded-md bg-teal-600 text-white cursor-pointer hover:bg-teal-700 text-base border-none']
+      ],
       presets: [
         presetUno(),
         presetAttributify(),
@@ -20,13 +23,19 @@ export default defineConfig({
       ],
     }),
     AutoImport({
+      include: [
+        /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+        /\.vue$/,
+        /\.vue\?vue/, // .vue
+        /\.md$/, // .md
+      ],
       resolvers: [ElementPlusResolver()],
       imports: ['vue'],
       dts: 'types/auto-imports.d.ts',
     }),
     Components({
       resolvers: [ElementPlusResolver()],
-      dirs: ['src/components'],
+      dirs: ['src/components','src/views'],
       directoryAsNamespace: true,
       dts: 'types/components.d.ts',
     }),

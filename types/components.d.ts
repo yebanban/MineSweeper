@@ -4,7 +4,9 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
-    Blocks: typeof import('./../src/components/Blocks.vue')['default']
+    Block: typeof import('./../src/components/Block.vue')['default']
+    Footer: typeof import('./../src/components/Footer.vue')['default']
+    Game: typeof import('./../src/views/Game.vue')['default']
   }
 }
 
