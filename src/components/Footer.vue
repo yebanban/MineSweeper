@@ -1,9 +1,10 @@
 <template>
-  <div flex justify-center pb-8>
-    <button @click="toggleDark" cursor-pointer bg-transparent border-0 text-xl>
-      <div v-if="isDark" i-ph:moon text-white></div>
+  <div flex="~ gap-3" justify-center pb-8>
+    <button @click="toggleDark" btn-logo bg-transparent>
+      <div v-if="isDark" i-ph:moon></div>
       <div v-else i-ph:sun></div>
     </button>
+    <a href="https://github.com/yebanban/MineSweeper"  title="github" i-mdi-github btn-logo></a>
   </div>
 </template>
 

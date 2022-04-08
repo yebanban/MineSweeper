@@ -1,5 +1,5 @@
 <template>
-  <div pt-10 text-center>
+  <div pt-10 text='center '>
     MineSweeper
     <div mt-8 flex="~ gap-6" justify-center>
       <button btn @click="gamePlay.reset()">New Game</button>
@@ -7,7 +7,7 @@
       <button btn @click="newGame('medium')">Medium</button>
       <button btn @click="newGame('hard')">Hard</button>
     </div>
-    <div mt-8 flex="~ gap-6" justify-center>
+    <div mt-8 flex="~ gap-6" justify-center font-mono>
       <div flex="~ gap-1" items-center text-2xl>
         <div i-ph:timer></div>
         {{ gamePlay.gameState.value.time }}
