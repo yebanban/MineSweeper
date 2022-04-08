@@ -4,7 +4,7 @@
       <div v-if="isDark" i-ph:moon></div>
       <div v-else i-ph:sun></div>
     </button>
-    <a href="https://github.com/yebanban/MineSweeper"  title="github" i-mdi-github btn-logo></a>
+    <a href="https://github.com/yebanban/MineSweeper" target="_blank" title="github" i-mdi-github btn-logo></a>
   </div>
 </template>
 
