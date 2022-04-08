@@ -33,11 +33,11 @@
 
 <script setup lang="ts">
 import { GamePlay } from '../composables/GamePlay'
-const gamePlay = new GamePlay(10, 10, 20)
+const gamePlay = new GamePlay(10, 10, 16)
 const newGame=(difficult:'easy'|'medium'|'hard')=>{
   switch(difficult){
     case 'easy':
-      gamePlay.reset(10,10,20)
+      gamePlay.reset(10,10,16)
       break
     case 'medium':
       gamePlay.reset(16,16,60)

@@ -114,7 +114,9 @@ export class GamePlay {
     }
     if (this.isWin()) {
       this.gameOver('won')
-      alert('赢了！')
+      setTimeout(() => {
+        alert('赢了！')
+      })
     }
   }
   rclick (block: BlockState){
@@ -122,7 +124,9 @@ export class GamePlay {
     this.setFlag(block)
     if (this.isWin()) {
       this.gameOver('won')
-      alert('赢了！')
+      setTimeout(() => {
+        alert('赢了！')
+      })
     }
   }
   gameStart(block: BlockState){
@@ -156,7 +160,7 @@ export class GamePlay {
     }
   }
   isWin(){
-    return this.blocks.flat().every(b => b.isOpen || (b.isFlag && b.isMine))
+    return this.blocks.flat().every(b => (b.isOpen&&!b.isMine) || (b.isFlag && b.isMine))
   }
   setFlag(block: BlockState){
     block.isFlag = !block.isFlag
